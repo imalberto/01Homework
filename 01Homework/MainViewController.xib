@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="commentTextField" destination="u4c-bY-Akk" id="15Q-C9-VwU"/>
+                <outlet property="commentViewContainer" destination="JE0-al-0SX" id="tse-sH-Eds"/>
                 <outlet property="contentView" destination="7fX-pD-kuK" id="0yE-Cp-hnV"/>
                 <outlet property="likeButton" destination="5Y1-8T-HAr" id="ApI-fy-5hy"/>
                 <outlet property="likesAttributedLabel" destination="Ms8-5e-REm" id="pvO-Au-2Wo"/>
@@ -156,6 +157,7 @@
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <state key="highlighted" backgroundImage="bar_bg_rpt_highlight"/>
                                     <connections>
                                         <action selector="onPost:" destination="-1" eventType="touchUpInside" id="rL8-Px-TDV"/>
                                     </connections>

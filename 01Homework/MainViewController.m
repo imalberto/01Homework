@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *commentTextField;
 @property (strong, nonatomic) IBOutlet TTTAttributedLabel *likesAttributedLabel;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
+@property (strong, nonatomic) IBOutlet UIView *commentViewContainer;
 
 @property (strong, nonatomic) IBOutlet TTTAttributedLabel *postAttributedLabel;
 
@@ -112,6 +113,7 @@
 - (IBAction)onPost:(id)sender {
   NSLog(@"TODO: Submit POST");
 
+  [self.commentTextField resignFirstResponder];
 }
 
 - (IBAction)onLikePost:(id)sender {
@@ -149,13 +151,71 @@
                         delay:0.0
                       options:(animationCurve << 16)
                    animations:^{
-//                     self.commentImageView.frame = CGRectMake(0, self.view.frame.size.height - kbSize.height - self.commentImageView.frame.size.height, self.commentImageView.frame.size.width, self.commentImageView.frame.size.height);
+      self.commentViewContainer.frame =
+          CGRectMake(0, self.view.frame.size.height - kbSize.height -
+                     self.commentViewContainer.frame.size.height,
+                     self.commentViewContainer.frame.size.width,
+                     self.commentViewContainer.frame.size.height);
+
                    }
                    completion:nil];
 }
 
 - (void)willHideKeyboard:(NSNotification *)notification {
-  // TODO
+
+  NSDictionary *userInfo = [notification userInfo];
+
+  // Get the keyboard height and width from the notification
+  // Size varies depending on OS, language, orientation
+  // CGSize kbSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+  // NSLog(@"Height: %f Width: %f", kbSize.height, kbSize.width);
+
+  // Get the animation duration and curve from the notification
+  NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+  NSTimeInterval animationDuration = durationValue.doubleValue;
+  NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+  UIViewAnimationCurve animationCurve = curveValue.intValue;
+
+  [UIView animateWithDuration:animationDuration
+                        delay:0.0
+                      // options:(animationCurve << 16)
+                      options:(animationCurve << 16)
+                   animations:^{
+                     self.commentViewContainer.frame =
+                     CGRectMake(0, self.view.frame.size.height - self.commentViewContainer.frame.size.height - 44,
+                                self.commentViewContainer.frame.size.width,
+                                self.commentViewContainer.frame.size.height);
+
+                   }
+                   completion:nil];
+  
+
+//  NSDictionary *userInfo = [notification userInfo];
+//  
+//  // Get the keyboard height and width from the notification
+//  // Size varies depending on OS, language, orientation
+//  CGSize kbSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//  NSLog(@"Height: %f Width: %f", kbSize.height, kbSize.width);
+//  
+//  // Get the animation duration and curve from the notification
+//  NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+//  NSTimeInterval animationDuration = durationValue.doubleValue;
+//  NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+//  UIViewAnimationCurve animationCurve = curveValue.intValue;
+//  
+//  // Move the view with the same duration and animation curve so that it will match with the keyboard animation
+//  [UIView animateWithDuration:animationDuration
+//                        delay:0.0
+//                      options:(animationCurve << 16)
+//                   animations:^{
+//                     self.commentViewContainer.frame =
+//                     CGRectMake(0, self.view.frame.size.height - kbSize.height -
+//                                self.commentViewContainer.frame.size.height,
+//                                self.commentViewContainer.frame.size.width,
+//                                self.commentViewContainer.frame.size.height);
+//                     
+//                   }
+//                   completion:nil];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
