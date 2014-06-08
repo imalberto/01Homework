@@ -7,9 +7,18 @@
 //
 
 #import "MainViewController.h"
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 
-@interface MainViewController ()
+
+@interface MainViewController () <TTTAttributedLabelDelegate>
+
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UITextField *commentTextField;
+@property (strong, nonatomic) IBOutlet TTTAttributedLabel *likesAttributedLabel;
+
+@property (strong, nonatomic) IBOutlet TTTAttributedLabel *postAttributedLabel;
+
+- (IBAction)onPost:(id)sender;
 
 - (void)willShowKeyboard:(NSNotification *)notification;
 - (void)willHideKeyboard:(NSNotification *)notification;
@@ -44,7 +53,55 @@
 
 
 - (void)configureView {
+  NSString *text;
+
   self.contentView.layer.cornerRadius = 2;
+  
+  // 1,675 people like this.
+  self.likesAttributedLabel.font = [UIFont systemFontOfSize:14];
+  self.likesAttributedLabel.textColor = [UIColor blackColor];
+  self.likesAttributedLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+  self.likesAttributedLabel.numberOfLines = 1;
+  text = @"1,675 people like this.";
+  [self.likesAttributedLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+  
+      NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"1,675 people"];
+      
+      UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:12];
+      CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+      if (font) {
+        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+        CFRelease(font);
+      }
+      return mutableAttributedString;
+  }];
+  
+  self.postAttributedLabel.enabledTextCheckingTypes = NSTextCheckingAllTypes;
+  self.postAttributedLabel.delegate = self;
+  self.postAttributedLabel.font = [UIFont systemFontOfSize:12];
+  self.postAttributedLabel.textColor = [UIColor darkGrayColor];
+  self.postAttributedLabel.lineBreakMode = NSLineBreakByWordWrapping;
+  self.postAttributedLabel.numberOfLines = 0;
+  
+  text = @"From collarless shorts to high-waisted parts, #Her's costume designer, Casey Storm, explains how he created his fasion looks for the future: http://bit.ly/1jV9zMB";
+  
+  [self.postAttributedLabel setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+  
+      NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"#Her's"];
+
+      UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:12];
+      CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+      if (font) {
+        [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+        CFRelease(font);
+      }
+      return mutableAttributedString;
+  }];
+
+}
+
+- (IBAction)onPost:(id)sender {
+  NSLog(@"TODO: Submit POST");
 }
 
 - (void)willShowKeyboard:(NSNotification *)notification {
@@ -73,5 +130,9 @@
 
 - (void)willHideKeyboard:(NSNotification *)notification {
   // TODO
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+  NSLog(@"%@", url);
 }
 @end
