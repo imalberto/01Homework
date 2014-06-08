@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="commentTextField" destination="u4c-bY-Akk" id="15Q-C9-VwU"/>
                 <outlet property="contentView" destination="7fX-pD-kuK" id="0yE-Cp-hnV"/>
+                <outlet property="likeButton" destination="5Y1-8T-HAr" id="ApI-fy-5hy"/>
                 <outlet property="likesAttributedLabel" destination="Ms8-5e-REm" id="pvO-Au-2Wo"/>
                 <outlet property="postAttributedLabel" destination="iBq-MR-OOb" id="N7B-u3-TGp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -82,6 +83,10 @@
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <state key="selected" image="likeButtonSelected"/>
+                                            <connections>
+                                                <action selector="onLikePost:" destination="-1" eventType="touchUpInside" id="GVS-oJ-rva"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfk-Nz-TpW">
                                             <rect key="frame" x="93" y="0.0" width="107" height="40"/>
@@ -165,6 +170,7 @@
         <image name="her" width="1024" height="576"/>
         <image name="herProfile" width="50" height="50"/>
         <image name="likeButton" width="17" height="40"/>
+        <image name="likeButtonSelected" width="17" height="40"/>
         <image name="navbar" width="320" height="64"/>
         <image name="shareButton" width="16" height="16"/>
         <image name="tabbar" width="320" height="44"/>

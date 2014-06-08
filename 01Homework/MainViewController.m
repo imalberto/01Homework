@@ -15,13 +15,17 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UITextField *commentTextField;
 @property (strong, nonatomic) IBOutlet TTTAttributedLabel *likesAttributedLabel;
+@property (strong, nonatomic) IBOutlet UIButton *likeButton;
 
 @property (strong, nonatomic) IBOutlet TTTAttributedLabel *postAttributedLabel;
 
 - (IBAction)onPost:(id)sender;
+- (IBAction)onLikePost:(id)sender;
 
 - (void)willShowKeyboard:(NSNotification *)notification;
 - (void)willHideKeyboard:(NSNotification *)notification;
+
+@property (assign) BOOL likedPost;
 
 @end
 
@@ -31,6 +35,9 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
+  
+    self.likedPost = NO;
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
   }
@@ -102,6 +109,23 @@
 
 - (IBAction)onPost:(id)sender {
   NSLog(@"TODO: Submit POST");
+
+}
+
+- (IBAction)onLikePost:(id)sender {
+  NSLog(@"TODO: Like POST");
+
+//  self.likeButton.imageView.image = nil;
+//
+//  if (!_likedPost) {
+//    self.likeButton.imageView.image = [UIImage imageNamed:@"like_btn.png"];
+//  } else {
+//    self.likeButton.imageView.image = [UIImage imageNamed:@"like_btn_selected.png"];
+//  }
+//
+//  [self.likeButton.imageView setNeedsDisplay];
+
+  _likedPost = !_likedPost;
 }
 
 - (void)willShowKeyboard:(NSNotification *)notification {
