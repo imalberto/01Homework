@@ -66,7 +66,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuO-IL-AMH">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuO-IL-AMH">
                                     <rect key="frame" x="0.0" y="342" width="302" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -75,7 +75,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y1-8T-HAr">
-                                            <rect key="frame" x="10" y="0.0" width="75" height="40"/>
+                                            <rect key="frame" x="1" y="0.0" width="101" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -84,12 +84,13 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="selected" image="likeButtonSelected"/>
+                                            <state key="highlighted" backgroundImage="bar_bg_rpt_highlight"/>
                                             <connections>
                                                 <action selector="onLikePost:" destination="-1" eventType="touchUpInside" id="GVS-oJ-rva"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfk-Nz-TpW">
-                                            <rect key="frame" x="93" y="0.0" width="107" height="40"/>
+                                            <rect key="frame" x="103" y="0.0" width="101" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -97,15 +98,23 @@
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <state key="highlighted" backgroundImage="bar_bg_rpt_highlight"/>
+                                            <connections>
+                                                <action selector="onComment:" destination="-1" eventType="touchUpInside" id="D5t-zu-JlW"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-Gg-0kb">
-                                            <rect key="frame" x="219" y="10" width="61" height="16"/>
+                                            <rect key="frame" x="201" y="0.0" width="101" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="Share" image="shareButton">
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <state key="highlighted" backgroundImage="bar_bg_rpt_highlight"/>
+                                            <connections>
+                                                <action selector="onShare:" destination="-1" eventType="touchUpInside" id="bx8-fU-K0o"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -165,6 +174,7 @@
     </objects>
     <resources>
         <image name="bar_bg_rpt" width="1" height="41"/>
+        <image name="bar_bg_rpt_highlight" width="1" height="41"/>
         <image name="commentBar" width="320" height="44"/>
         <image name="commentButton" width="17" height="40"/>
         <image name="her" width="1024" height="576"/>

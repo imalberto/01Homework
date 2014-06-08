@@ -21,6 +21,8 @@
 
 - (IBAction)onPost:(id)sender;
 - (IBAction)onLikePost:(id)sender;
+- (IBAction)onComment:(id)sender;
+- (IBAction)onShare:(id)sender;
 
 - (void)willShowKeyboard:(NSNotification *)notification;
 - (void)willHideKeyboard:(NSNotification *)notification;
@@ -115,17 +117,17 @@
 - (IBAction)onLikePost:(id)sender {
   NSLog(@"TODO: Like POST");
 
-//  self.likeButton.imageView.image = nil;
-//
-//  if (!_likedPost) {
-//    self.likeButton.imageView.image = [UIImage imageNamed:@"like_btn.png"];
-//  } else {
-//    self.likeButton.imageView.image = [UIImage imageNamed:@"like_btn_selected.png"];
-//  }
-//
-//  [self.likeButton.imageView setNeedsDisplay];
-
   _likedPost = !_likedPost;
+  
+  self.likeButton.selected = _likedPost;
+}
+
+- (IBAction)onComment:(id)sender {
+  NSLog(@"TODO: Comment On POST");
+}
+
+- (IBAction)onShare:(id)sender {
+  NSLog(@"TODO: Share POST");
 }
 
 - (void)willShowKeyboard:(NSNotification *)notification {
