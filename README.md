@@ -15,7 +15,7 @@ Week 1 Homework
 - ✓ Add UILabels with attributed text (instead of plain) to bold individual words
 - ✓ Optional: Move the textfield when the keyboard appears
 - ✓ Optional: Setup CocoaPods for managing 3rd party libraries and use TTAttributedLabel to style link etc
-- x Optional: Configure the autoresizingMasks to support rotation
+- ✓ Optional: Configure the autoresizingMasks to support rotation
 - x Optional: Implement the same page programmatically without using Interface
   Builder
 
