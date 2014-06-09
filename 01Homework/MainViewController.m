@@ -114,6 +114,7 @@
   NSLog(@"TODO: Submit POST");
 
   [self.commentTextField resignFirstResponder];
+  self.commentTextField.text = nil;
 }
 
 - (IBAction)onLikePost:(id)sender {
@@ -165,12 +166,6 @@
 
   NSDictionary *userInfo = [notification userInfo];
 
-  // Get the keyboard height and width from the notification
-  // Size varies depending on OS, language, orientation
-  // CGSize kbSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-  // NSLog(@"Height: %f Width: %f", kbSize.height, kbSize.width);
-
-  // Get the animation duration and curve from the notification
   NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
   NSTimeInterval animationDuration = durationValue.doubleValue;
   NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
@@ -178,7 +173,6 @@
 
   [UIView animateWithDuration:animationDuration
                         delay:0.0
-                      // options:(animationCurve << 16)
                       options:(animationCurve << 16)
                    animations:^{
                      self.commentViewContainer.frame =
@@ -189,33 +183,6 @@
                    }
                    completion:nil];
   
-
-//  NSDictionary *userInfo = [notification userInfo];
-//  
-//  // Get the keyboard height and width from the notification
-//  // Size varies depending on OS, language, orientation
-//  CGSize kbSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//  NSLog(@"Height: %f Width: %f", kbSize.height, kbSize.width);
-//  
-//  // Get the animation duration and curve from the notification
-//  NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
-//  NSTimeInterval animationDuration = durationValue.doubleValue;
-//  NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
-//  UIViewAnimationCurve animationCurve = curveValue.intValue;
-//  
-//  // Move the view with the same duration and animation curve so that it will match with the keyboard animation
-//  [UIView animateWithDuration:animationDuration
-//                        delay:0.0
-//                      options:(animationCurve << 16)
-//                   animations:^{
-//                     self.commentViewContainer.frame =
-//                     CGRectMake(0, self.view.frame.size.height - kbSize.height -
-//                                self.commentViewContainer.frame.size.height,
-//                                self.commentViewContainer.frame.size.width,
-//                                self.commentViewContainer.frame.size.height);
-//                     
-//                   }
-//                   completion:nil];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
