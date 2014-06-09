@@ -21,5 +21,5 @@ Week 1 Homework
 
 ## Walkthrough
 
-![Walthrough](capture02.gif)
+![Walthrough](Recordings/capture02.gif)
 
