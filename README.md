@@ -4,7 +4,7 @@ Week 1 Homework
 
 ## How many hours to complete ?
 
-5 Hrs
+10 Hrs
 
 ## Which required and optional stories have been completed ?
 
