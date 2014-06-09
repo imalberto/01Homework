@@ -40,13 +40,28 @@
   if (self) {
   
     self.title = @"Post";
+    TTTAttributedLabel *titleLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    [titleLabel setText:@"Post" afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+    
+        NSRange boldRange = [[mutableAttributedString string] rangeOfString:@"Post" options:NSCaseInsensitiveSearch];
+        UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:18];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+        if (font) {
+          [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+          CFRelease(font);
+        }
+        return mutableAttributedString;
+    }];
+
+    [titleLabel sizeToFit];
+    self.navigationItem.titleView = titleLabel;
     self.likedPost = NO;
     
     UIBarButtonItem *btn;
     btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
     self.navigationItem.rightBarButtonItem = btn;
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:75 green:119 blue:190 alpha:0];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
@@ -69,12 +84,12 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotate {
-  return YES;
-}
-- (NSUInteger)supportedInterfaceOrientations {
-  return UIInterfaceOrientationMaskAll;
-}
+//- (BOOL)shouldAutorotate {
+//  return YES;
+//}
+//- (NSUInteger)supportedInterfaceOrientations {
+//  return UIInterfaceOrientationMaskAll;
+//}
 
 - (void)configureView {
   NSString *text;
