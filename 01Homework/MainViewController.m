@@ -39,7 +39,14 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
   
+    self.title = @"Post";
     self.likedPost = NO;
+    
+    UIBarButtonItem *btn;
+    btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = btn;
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:75 green:119 blue:190 alpha:0];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
@@ -64,6 +71,9 @@
 
 - (BOOL)shouldAutorotate {
   return YES;
+}
+- (NSUInteger)supportedInterfaceOrientations {
+  return UIInterfaceOrientationMaskAll;
 }
 
 - (void)configureView {

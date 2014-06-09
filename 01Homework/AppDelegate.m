@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "StartViewController.h"
 
 @implementation AppDelegate
 
@@ -16,8 +17,17 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     // Override point for customization after application launch.
+    StartViewController *s = [[StartViewController alloc] init];
     MainViewController *v = [[MainViewController alloc] init];
-    self.window.rootViewController = v;
+  
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:s];
+    nc.navigationBar.translucent = NO;
+    UIColor *color = [UIColor colorWithRed:0x45/255.0f green:0x63/255.0f blue:0x9A/255.0f alpha:0];
+    [[UINavigationBar appearance] setBarTintColor:color];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [nc pushViewController:v animated:NO];
+    
+    self.window.rootViewController = nc;
   
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
