@@ -216,5 +216,6 @@
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
   NSLog(@"%@", url);
+  
 }
 @end
