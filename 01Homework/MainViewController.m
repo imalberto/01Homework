@@ -51,7 +51,8 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
-  self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+  self.view.autoresizesSubviews = YES;
   [self configureView];
 }
 
