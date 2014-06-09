@@ -20,3 +20,6 @@ Week 1 Homework
   Builder
 
 ## Walkthrough
+
+![Walthrough](capture.gif)
+
